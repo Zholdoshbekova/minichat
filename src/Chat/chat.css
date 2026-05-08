@@ -1,33 +1,53 @@
 .chat_icon {
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
   z-index: 9999;
-}
-.icona {
-   height: 70px;
-   width: 70px;
-   cursor: pointer;
-   transition: 0.3s;
- }
- .icona:hover {
-  transform: scale(1.2);
- }
-.chat_place {
-    position: fixed;
-    bottom: 90px; 
-    width: 250px;
-    background: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: floatingVibration 2s infinite;
 }
 
-.text {
-    resize: none;
-    height: 80px;
-    margin-bottom: 5px;
+.icona {
+  width: 36px;
+  height: 36px;
+}
+
+.backend_status {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  padding: 8px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  z-index: 9999;
+}
+
+.backend_status_checking {
+  color: #555555;
+}
+
+.backend_status_connected {
+  color: green;
+}
+
+.backend_status_error {
+  color: red;
+}
+
+@keyframes floatingVibration {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(2deg);
+  }
 }
