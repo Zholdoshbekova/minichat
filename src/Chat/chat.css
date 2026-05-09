@@ -1,30 +1,104 @@
-
-
-/* Анимация плавающей вибрации */
-.chat_icon {
+.chat_container {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 36px;
-  height: 36px;
-  z-index: 9999;
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-end;
+  gap: 0;
+  width: 300px;
+  height: auto;
+}
+.chat_place {
+  display: flex;
+  flex-direction: column;
+  background: #f7a43f;
+  border-radius: 15px;
+  height: auto;
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease-out;
+  pointer-events: none;
+}
+.chat_container.active .chat_place {
+  opacity: 1;
+  transform: translateY(0); 
+  pointer-events: auto;
+}
+.chat_icon {
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  
   
 }
 .icona {
-    height: 0;
+  width: 90px;
+  animation: heartbeat 1.5s infinite;
+}
+.text {
+  width: 100%;
+  flex-grow: 1;
+  background: #f7a43f;
+  border: none;
+  overflow: hidden;
+  outline: none;
+  resize: none;
+  min-height: 40px;
+  line-height: 1.5;
+}
+.send {
+  position: relative;
+  background: #ff8800c4;
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 100;
+  pointer-events: auto ;
+}
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
-@keyframes floatingVibration {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-5px) rotate(-2deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(0deg);
-  }
-  75% {
-    transform: translateY(-5px) rotate(2deg);
-  }
+.messages_list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+  width: 100%;
 }
+.message {
+  max-width: 80%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+.message.me {
+  align-self: flex-end;
+  background: #dcf8c6;
+  color: black;
+}
+.message.other {
+  align-self: flex-start;
+  background: #fff;
+  color: black;
+}
+.input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
