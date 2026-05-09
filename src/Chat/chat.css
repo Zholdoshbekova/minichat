@@ -1,3 +1,4 @@
+
 .chat_container {
   position: fixed;
   bottom: 20px;
@@ -37,8 +38,17 @@
   justify-content: center;
   cursor: pointer;
   
-  
 }
+.chat_icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  z-index: 9999;
+  animation: floatingVibration 2s infinite;
+}
+
 .icona {
   width: 90px;
   animation: heartbeat 1.5s infinite;
@@ -100,5 +110,44 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.backend_status {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  padding: 8px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  z-index: 9999;
+}
+
+.backend_status_checking {
+  color: #555555;
+}
+
+.backend_status_connected {
+  color: green;
+}
+
+.backend_status_error {
+  color: red;
+}
+
+@keyframes floatingVibration {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(2deg);
+  }
 }
 
