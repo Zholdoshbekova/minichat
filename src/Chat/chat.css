@@ -88,7 +88,7 @@
 }
 .message.me {
   align-self: flex-end;
-  background: #dcf8c6;
+  background: #f3f6f1;
   color: black;
 }
 .message.other {
