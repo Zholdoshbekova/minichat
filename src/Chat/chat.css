@@ -1,0 +1,30 @@
+
+
+/* Анимация плавающей вибрации */
+.chat_icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  z-index: 9999;
+  
+}
+.icona {
+    height: 0;
+}
+
+@keyframes floatingVibration {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
