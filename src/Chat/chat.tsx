@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './chat.css';
-import chatIcon from './chat.svg';
+import ChatIcon from '../Svg/chat.svg';
 
 
 
@@ -75,7 +75,7 @@ export const ChatI = () => {
       </div>
 
       <div className='chat_icon' onClick={ChatCloseOpen}>
-        <img className='icona' src={chatIcon} alt="icon" />
+        <img className='icona' src={ChatIcon} alt="icon" />
       </div>
     </div>
   );
