@@ -1,5 +1,5 @@
 import { Admin } from './Admin/admin';
-import { Chat }  from './Chat/chat';
+import { Chat } from './Chat/chat';
 
 
 
