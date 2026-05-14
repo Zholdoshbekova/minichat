@@ -24,6 +24,7 @@
   transform: translateY(20px);
   transition: all 0.3s ease-out;
   pointer-events: none;
+  margin-bottom: 70px;
 }
 .chat_container.active .chat_place {
   opacity: 1;
@@ -50,6 +51,7 @@
 }
 
 .icona {
+  color: #f2730c;
   width: 90px;
   animation: heartbeat 1.5s infinite;
 }
