@@ -8,11 +8,12 @@ export const useWebSocket = ({
 }: UseWebSocketOptions): UseWebSocketReturn => {
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
   const socketRef = useRef<WebSocket | null>(null);
   const onMessageRef = useRef(onMessageReceived);
 
   useEffect(() => {
-  onMessageRef.current = onMessageReceived;
+    onMessageRef.current = onMessageReceived;
   }, [onMessageReceived]);
 
   useEffect(() => {
@@ -24,47 +25,50 @@ export const useWebSocket = ({
     socket.onopen = () => {
       setIsConnected(true);
       setError(null);
+      console.log('WebSocket соединение открыто');
     };
 
     socket.onmessage = (event) => {
       try {
         const data: Message = JSON.parse(event.data);
+
         if (onMessageRef.current) {
           onMessageRef.current(data);
         }
       } catch (err) {
         console.error('Ошибка парсинга сообщения:', err);
-        if (onMessageReceived) 
-            { onMessageReceived({ 
-               
-               text: event.data,  
-               senderId: 'other',
-               
-            });
-         }
+
+        if (onMessageRef.current) {
+          onMessageRef.current({
+            text: event.data,
+            sender: 'other',
+          });
+        }
       }
     };
 
     socket.onerror = () => {
       setError('Ошибка WebSocket соединения');
+      console.error('Ошибка WebSocket соединения');
     };
 
     socket.onclose = () => {
       setIsConnected(false);
+      console.log('WebSocket соединение закрыто');
     };
 
     return () => {
       socket.close();
     };
- },  [url, autoConnect]);
+  }, [url, autoConnect]);
 
-  const sendMessage = useCallback((text: string, senderId: string) => {
+  const sendMessage = useCallback((text: string, senderId?: string) => {
     if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
       const messageData = {
         text,
-        senderId,
-        timestamp: Date.now(),
+        sender: senderId || 'anonymous',
       };
+
       socketRef.current.send(JSON.stringify(messageData));
     } else {
       console.warn('Невозможно отправить сообщение: соединение закрыто');

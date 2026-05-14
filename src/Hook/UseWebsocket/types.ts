@@ -1,6 +1,10 @@
 export interface Message {
-  senderId: string;
+  id?: number;
   text: string;
+  sender?: string;
+  senderId?: string;
+  createdAt?: string;
+  timestamp?: number;
 }
 
 export interface UseWebSocketOptions {
@@ -11,6 +15,6 @@ export interface UseWebSocketOptions {
 
 export interface UseWebSocketReturn {
   isConnected: boolean;
-  sendMessage: (text: string, senderId: string) => void;
+  sendMessage: (text: string, senderId?: string) => void;
   error: string | null;
 }
